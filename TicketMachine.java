@@ -102,8 +102,13 @@ public class TicketMachine
     
     public int emptyMachine()
     {
-        int totalBefore = total; 
-        total = 0;
-        return totalBefore;
-    }
+        if(balance > 0){
+            return -1;
+        }
+        else {
+            int totalBefore = total; 
+            total = 0;
+            return totalBefore;
+            }
+        }
 }
