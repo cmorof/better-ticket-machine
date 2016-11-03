@@ -17,15 +17,18 @@ public class TicketMachine
     private int balance;
     // The total amount of money collected by this machine.
     private int total;
+    // Máquina normal máquina con premio
+    private boolean prize;
 
     /**
      * Create a machine that issues tickets of the given price.
      */
-    public TicketMachine(int cost)
+    public TicketMachine(int cost, boolean premio)
     {
-        price = cost;
-        balance = 0;
-        total = 0;
+          price = cost;
+          balance = 0;
+          total = 0;
+          prize = premio;
     }
 
     /**
@@ -67,7 +70,7 @@ public class TicketMachine
      */
     public void printTicket()
     {
-        if(balance >= price) {
+        if(balance >= price & prize != true) {
             // Simulate the printing of a ticket.
             System.out.println("##################");
             System.out.println("# The BlueJ Line");
@@ -80,6 +83,29 @@ public class TicketMachine
             total = total + price;
             // Reduce the balance by the prince.
             balance = balance - price;
+        }
+        else if(balance >= price & prize == true)
+        {
+            // Simulate the printing of a ticket.
+            System.out.println("##################");
+            System.out.println("# The BlueJ Line");
+            System.out.println("# Ticket");
+            System.out.println("# " + price + " cents.");
+            System.out.println("##################");
+            System.out.println();
+
+            // Update the total collected with the price.
+            total = total + price;
+            // Reduce the balance by the prince.
+            balance = balance - price;
+            
+            // Simulate the printing of a ticket.
+            System.out.println("##################");
+            System.out.println("# The BlueJ Line");
+            System.out.println("# Ticket");
+            System.out.println("# " + price + " cents.");
+            System.out.println("##################");
+            System.out.println();
         }
         else {
             System.out.println("You must insert at least: " +
