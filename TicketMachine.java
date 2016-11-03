@@ -19,16 +19,22 @@ public class TicketMachine
     private int total;
     // Máquina normal máquina con premio
     private boolean prize;
-
+    // Número máximo de billetes que se pueden vender
+    private int max;
+    // Contador
+    private int cont;
+    
     /**
      * Create a machine that issues tickets of the given price.
      */
-    public TicketMachine(int cost, boolean premio)
+    public TicketMachine(int cost, int maximo, boolean premio)
     {
           price = cost;
           balance = 0;
           total = 0;
           prize = premio;
+          cont = 0;
+          max = maximo;
     }
 
     /**
@@ -70,47 +76,55 @@ public class TicketMachine
      */
     public void printTicket()
     {
-        if(balance >= price & prize != true) {
-            // Simulate the printing of a ticket.
-            System.out.println("##################");
-            System.out.println("# The BlueJ Line");
-            System.out.println("# Ticket");
-            System.out.println("# " + price + " cents.");
-            System.out.println("##################");
-            System.out.println();
+        if (cont <= max) {
+            if(balance >= price & prize != true) {
+                // Simulate the printing of a ticket.
+                System.out.println("##################");
+                System.out.println("# The BlueJ Line");
+                System.out.println("# Ticket");
+                System.out.println("# " + price + " cents.");
+                System.out.println("##################");
+                System.out.println();
 
-            // Update the total collected with the price.
-            total = total + price;
-            // Reduce the balance by the prince.
-            balance = balance - price;
-        }
-        else if(balance >= price & prize == true)
-        {
-            // Simulate the printing of a ticket.
-            System.out.println("##################");
-            System.out.println("# The BlueJ Line");
-            System.out.println("# Ticket");
-            System.out.println("# " + price + " cents.");
-            System.out.println("##################");
-            System.out.println();
+                // Update the total collected with the price.
+                total = total + price;
+                // Reduce the balance by the prince.
+                balance = balance - price;
+            }
+            else if(balance >= price & prize == true)
+            {
+                // Simulate the printing of a ticket.
+                System.out.println("##################");
+                System.out.println("# The BlueJ Line");
+                System.out.println("# Ticket");
+                System.out.println("# " + price + " cents.");
+                System.out.println("##################");
+                System.out.println();
 
-            // Update the total collected with the price.
-            total = total + price;
-            // Reduce the balance by the prince.
-            balance = balance - price;
+                // Update the total collected with the price.
+                total = total + price;
+                // Reduce the balance by the prince.
+                balance = balance - price;
             
-            // Simulate the printing of a ticket.
-            System.out.println("##################");
-            System.out.println("# The BlueJ Line");
-            System.out.println("# Ticket");
-            System.out.println("# " + price + " cents.");
-            System.out.println("##################");
-            System.out.println();
-        }
-        else {
-            System.out.println("You must insert at least: " +
-                               (price - balance) + " more cents.");
+                // Simulate the printing of a ticket.
+                System.out.println("##################");
+                System.out.println("# The BlueJ Line");
+                System.out.println("# Ticket");
+                System.out.println("# " + price + " cents.");
+                System.out.println("##################");
+                System.out.println();
+            }
+            else {
+                System.out.println("You must insert at least: " +
+                                   (price - balance) + " more cents.");
                     
+                            }
+        
+            cont = cont + 1;
+        }
+        else
+        {
+            System.out.println("Error");
         }
     }
 
